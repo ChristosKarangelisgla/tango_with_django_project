@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+	{% load staticfiles %} <!-- New line -->
+
+<html>
+	<body>
+		<div>
+			This tutorial has been put together by Christos Karangelis
+		</div>
+		<div>
+			<a href="/rango/">index</a><br />
+			<img src="{% static "images/rango.jpg" %}"
+				alt="Picture of Rango" />
+		</div>		
+
+		
+
+		<img src="{{ MEDIA_URL}}cat.jpg" />
+
+		
+	</body>
+</html>
