@@ -28,6 +28,7 @@ def about(request):
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.
     # return HttpResponse("Rango says hey there partner!")
+
     return render(request, 'rango/about.html')
 
 def show_category(request, category_name_slug):
