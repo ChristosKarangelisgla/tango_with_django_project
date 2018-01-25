@@ -50,9 +50,11 @@ def about(request):
     context_dict = {'boldmessage': "Happy, smile, sweet, cheers!"}
     context_dict['visits'] = request.session['visits']
 
+    response = render(request, 'rango/about.html', context=context_dict)
+
     return response
 
-    response = render(request, 'rango/about.html', context=context_dict)
+
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
