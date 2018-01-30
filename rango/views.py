@@ -42,9 +42,9 @@ def about(request):
     # We make use of the shortcut function to make our lives easier.
     # Note that the first parameter is the template we wish to use.
     # return HttpResponse("Rango says hey there partner!")
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-    request.session.delete_test_cookie()
+    #if request.session.test_cookie_worked():
+    #    print("TEST COOKIE WORKED!")
+    #request.session.delete_test_cookie()
 
     visitor_cookie_handler(request)
     context_dict = {'boldmessage': "Happy, smile, sweet, cheers!"}
@@ -83,7 +83,7 @@ def show_category(request, category_name_slug):
         # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
 
-
+@login_required
 def add_category(request):
     form = CategoryForm()
 
@@ -109,7 +109,7 @@ def add_category(request):
     # Render the form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})
 
-
+@login_required
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -187,8 +187,8 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-        # Render the template depending on the context.
-        return render(request,
+    # Render the template depending on the context.
+    return render(request,
                       'rango/register.html',
                      {'user_form': user_form,
                       'profile_form': profile_form,
@@ -238,7 +238,7 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    return render(request, 'rango/restricted.html', {})
 
 
 # Use the login_required() decorator to ensure only those logged in can
